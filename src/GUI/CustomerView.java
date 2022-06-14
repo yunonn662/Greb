@@ -21,10 +21,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Yun Onn
- */
+
 public class CustomerView extends javax.swing.JFrame {
     Connection con;
     CustomerManager customer = new CustomerManager();
@@ -67,7 +64,7 @@ public class CustomerView extends javax.swing.JFrame {
         DriverSelectionTable = new javax.swing.JTable();
         Jselect = new javax.swing.JLabel();
         selectEntry = new javax.swing.JTextField();
-        UpdateCustomerButton1 = new javax.swing.JButton();
+        UpdateCustomerButton = new javax.swing.JButton();
         SearchCustomerButton = new javax.swing.JButton();
         Jname = new javax.swing.JLabel();
         RequestButton = new javax.swing.JButton();
@@ -77,6 +74,7 @@ public class CustomerView extends javax.swing.JFrame {
         DriverList_UpdateTime = new javax.swing.JLabel();
         Jcapacity = new javax.swing.JLabel();
         BackButton = new javax.swing.JButton();
+        ClearButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -180,11 +178,11 @@ public class CustomerView extends javax.swing.JFrame {
             }
         });
 
-        UpdateCustomerButton1.setText("Update Customer");
-        UpdateCustomerButton1.setPreferredSize(new java.awt.Dimension(165, 38));
-        UpdateCustomerButton1.addActionListener(new java.awt.event.ActionListener() {
+        UpdateCustomerButton.setText("Update Customer");
+        UpdateCustomerButton.setPreferredSize(new java.awt.Dimension(165, 38));
+        UpdateCustomerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UpdateCustomerButton1ActionPerformed(evt);
+                UpdateCustomerButtonActionPerformed(evt);
             }
         });
 
@@ -236,6 +234,14 @@ public class CustomerView extends javax.swing.JFrame {
             }
         });
 
+        ClearButton.setText("Clear");
+        ClearButton.setPreferredSize(new java.awt.Dimension(165, 38));
+        ClearButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ClearButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -269,8 +275,9 @@ public class CustomerView extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(SearchCustomerButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(RequestButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(UpdateCustomerButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(AddCustomerButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(UpdateCustomerButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(AddCustomerButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ClearButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 865, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)))
@@ -303,15 +310,20 @@ public class CustomerView extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(AddCustomerButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(UpdateCustomerButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(UpdateCustomerButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(SearchCustomerButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(RequestButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(39, 39, 39)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Jselect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(selectEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(135, 135, 135)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(Jselect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(selectEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(RequestButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(ClearButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -377,65 +389,78 @@ public class CustomerView extends javax.swing.JFrame {
 
     //Button to refresh available list of drivers with ETA calculated at the exact time the button is initiated.
     private void RequestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RequestButtonActionPerformed
-        String jname = nameEntry.getText();
-        int jeta = Integer.parseInt(etaEntry.getText());
-        int jcapacity = Integer.parseInt(capacityEntry.getText());
-        double jcx = Double.parseDouble(CXEntry.getText());
-        double jcy = Double.parseDouble(CYEntry.getText());
-        double jdx = Double.parseDouble(DXEntry.getText());
-        double jdy = Double.parseDouble(DYEntry.getText());
-        try {
-            Graph graph = book.CustomerGraph(jname);
-            book.UpdateDriverEAT(graph, jname);
-            DBConnect db = new DBConnect();
-            con = db.connect();
-            String query = "select name,capacity,eat,rating from driver where status='Available' AND capacity>='" + jcapacity + "' AND eat<='" + jeta + "'";
-            PreparedStatement ps = this.con.prepareStatement(query);
-            ResultSet rs = ps.executeQuery(query);
-            ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
-            DefaultTableModel model = (DefaultTableModel)DriverSelectionTable.getModel();
-            String name, capacity, eat,reputation;
-            model.setRowCount(0); //Clear all rows (Reset the table)
-            //timeLabel.setText("Current Time: "+ time.current);
-            while(rs.next()){
-                name=rs.getString(1);
-                capacity=rs.getString(2);
-                eat=rs.getString(3);
-                reputation=rs.getString(4);
+        if(!nameEntry.getText().isEmpty()&&!capacityEntry.getText().isEmpty()&&!etaEntry.getText().isEmpty()&&
+                !CXEntry.getText().isEmpty()&&!CYEntry.getText().isEmpty()&&
+                !DXEntry.getText().isEmpty()&&!DYEntry.getText().isEmpty()){
+            
+            Time.DLT = time.current;
+            DriverList_UpdateTime.setText("List Last Updated Time : "+time.DLT);
+            String jname = nameEntry.getText();
+            int jeta = Integer.parseInt(etaEntry.getText());
+            int jcapacity = Integer.parseInt(capacityEntry.getText());
+            double jcx = Double.parseDouble(CXEntry.getText());
+            double jcy = Double.parseDouble(CYEntry.getText());
+            double jdx = Double.parseDouble(DXEntry.getText());
+            double jdy = Double.parseDouble(DYEntry.getText());
+            try {
+                Graph graph = book.CustomerGraph(jname);
+                book.UpdateDriverEAT(graph, jname);
+                DBConnect db = new DBConnect();
+                con = db.connect();
+                String query = "select name,capacity,eat,rating from driver where status='Available' AND capacity>='" + jcapacity + "' AND eat<='" + jeta + "'";
+                PreparedStatement ps = this.con.prepareStatement(query);
+                ResultSet rs = ps.executeQuery(query);
+                ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+                DefaultTableModel model = (DefaultTableModel)DriverSelectionTable.getModel();
+                String name, capacity, eat,reputation;
+                model.setRowCount(0); //Clear all rows (Reset the table)
+                //timeLabel.setText("Current Time: "+ time.current);
+                while(rs.next()){
+                    name=rs.getString(1);
+                    capacity=rs.getString(2);
+                    eat=rs.getString(3);
+                    reputation=rs.getString(4);
 
-                String[] row={name, capacity, eat,reputation};
-                model.addRow(row);
+                    String[] row={name, capacity, eat,reputation};
+                    model.addRow(row);
 
+                }
+                ps.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(CustomerView.class.getName()).log(Level.SEVERE, null, ex);
             }
-            ps.close();
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(CustomerView.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }else{
+            JOptionPane.showMessageDialog(null,"Please fill out the customer's details!");
+        }//End of if statement
     }//GEN-LAST:event_RequestButtonActionPerformed
      
     //Button to autofill Customer(Request) details
     private void SearchCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {  
-         try {
-            DBConnect db = new DBConnect();
-            con = db.connect();
-            String str = "Select * from customer where name=?";
-            PreparedStatement pstm = con.prepareStatement(str);
-            pstm.setString(1, nameEntry.getText());
-            ResultSet rs = pstm.executeQuery();
-            if(rs.next()){
-                nameEntry.setText(rs.getString("name"));
-                etaEntry.setText(rs.getString("eta"));
-                capacityEntry.setText(rs.getString("capacity"));
-                CXEntry.setText(rs.getString("current_X"));
-                CYEntry.setText(rs.getString("current_Y"));
-                DXEntry.setText(rs.getString("dest_X"));
-                DYEntry.setText(rs.getString("dest_Y"));
-            }
+        if(!nameEntry.getText().isEmpty()){
+            try {
+                DBConnect db = new DBConnect();
+                con = db.connect();
+                String str = "Select * from customer where name=?";
+                PreparedStatement pstm = con.prepareStatement(str);
+                pstm.setString(1, nameEntry.getText());
+                ResultSet rs = pstm.executeQuery();
+                if(rs.next()){
+                    nameEntry.setText(rs.getString("name"));
+                    etaEntry.setText(rs.getString("eta"));
+                    capacityEntry.setText(rs.getString("capacity"));
+                    CXEntry.setText(rs.getString("current_X"));
+                    CYEntry.setText(rs.getString("current_Y"));
+                    DXEntry.setText(rs.getString("dest_X"));
+                    DYEntry.setText(rs.getString("dest_Y"));
+                }
             
-        } catch (SQLException ex) {
-            Logger.getLogger(CustomerView.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            } catch (SQLException ex) {
+                Logger.getLogger(CustomerView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else{
+            JOptionPane.showMessageDialog(null,"Please provide customer's name to search!");
+        }//End of if statement
      }  
 //GEN-FIRST:event_SearchCustomerButtonActionPerformed
         
@@ -443,57 +468,59 @@ public class CustomerView extends javax.swing.JFrame {
 
     //Button to update customer request and update an available list of driver with ETA calculated 
     //at the exact time the button is initiated.
-    private void UpdateCustomerButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateCustomerButton1ActionPerformed
-        Time.CLT = time.current;
-        String jname = nameEntry.getText();
-        int jeta = Integer.parseInt(etaEntry.getText());
-        int jcapacity = Integer.parseInt(capacityEntry.getText());
-        double jcx = Double.parseDouble(CXEntry.getText());
-        double jcy = Double.parseDouble(CYEntry.getText());
-        double jdx = Double.parseDouble(DXEntry.getText());
-        double jdy = Double.parseDouble(DYEntry.getText());
-        customer.updateCustomer(jname, jeta, jcapacity, jcx, jcy, jdx, jdy);
+    private void UpdateCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateCustomerButtonActionPerformed
+        if(!nameEntry.getText().isEmpty()&&!capacityEntry.getText().isEmpty()&&!etaEntry.getText().isEmpty()&&
+                !CXEntry.getText().isEmpty()&&!CYEntry.getText().isEmpty()&&
+                !DXEntry.getText().isEmpty()&&!DYEntry.getText().isEmpty()){
+            
+            Time.DLT = time.current;
+            Time.CLT = time.current;
+            DriverList_UpdateTime.setText("List Last Updated Time : "+time.DLT);
+            
+            String jname = nameEntry.getText();
+            int jeta = Integer.parseInt(etaEntry.getText());
+            int jcapacity = Integer.parseInt(capacityEntry.getText());
+            double jcx = Double.parseDouble(CXEntry.getText());
+            double jcy = Double.parseDouble(CYEntry.getText());
+            double jdx = Double.parseDouble(DXEntry.getText());
+            double jdy = Double.parseDouble(DYEntry.getText());
+            customer.updateCustomer(jname, jeta, jcapacity, jcx, jcy, jdx, jdy);
+            
+            JOptionPane.showMessageDialog(null,"Customer Request Updated Successfully. Please choose your driver!");
 
-        nameEntry.setText("");
-        capacityEntry.setText("");
-        etaEntry.setText("");
-        CXEntry.setText("");
-        CYEntry.setText("");
-        DXEntry.setText("");
-        DYEntry.setText("");
+            try {
+                Graph graph = book.CustomerGraph(jname);
+                book.UpdateDriverEAT(graph, jname);
+                DBConnect db = new DBConnect();
+                con = db.connect();
+                String query = "select name,capacity,eat,rating from driver where status='Available' AND capacity>='" + jcapacity +"' AND eat<='" + jeta + "'";
+                PreparedStatement ps = this.con.prepareStatement(query);
+                ResultSet rs = ps.executeQuery(query);
+                ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+                DefaultTableModel model = (DefaultTableModel)DriverSelectionTable.getModel();
+                String name, capacity, eat,reputation;
+                model.setRowCount(0); //Clear all rows (Reset the table)
+                //timeLabel.setText("Current Time: "+ time.current);
+                while(rs.next()){
+                    name=rs.getString(1);
+                    capacity=rs.getString(2);
+                    eat=rs.getString(3);
+                    reputation=rs.getString(4);
 
-        JOptionPane.showMessageDialog(null,"User Updated Successfully. Please choose your driver!");
+                    String[] row={name, capacity, eat,reputation};
+                    model.addRow(row);
 
-        try {
-            Graph graph = book.CustomerGraph(jname);
-            book.UpdateDriverEAT(graph, jname);
-            DBConnect db = new DBConnect();
-            con = db.connect();
-            String query = "select name,capacity,eat,rating from driver where status='Available' AND capacity>='" + jcapacity +"' AND eat<='" + jeta + "'";
-            PreparedStatement ps = this.con.prepareStatement(query);
-            ResultSet rs = ps.executeQuery(query);
-            ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
-            DefaultTableModel model = (DefaultTableModel)DriverSelectionTable.getModel();
-            String name, capacity, eat,reputation;
-            model.setRowCount(0); //Clear all rows (Reset the table)
-            //timeLabel.setText("Current Time: "+ time.current);
-            while(rs.next()){
-                name=rs.getString(1);
-                capacity=rs.getString(2);
-                eat=rs.getString(3);
-                reputation=rs.getString(4);
+                }
+                ps.close();
+                con.close();
 
-                String[] row={name, capacity, eat,reputation};
-                model.addRow(row);
-
+            } catch (SQLException ex) {
+                Logger.getLogger(CustomerView.class.getName()).log(Level.SEVERE, null, ex);
             }
-            ps.close();
-            con.close();
-
-        } catch (SQLException ex) {
-            Logger.getLogger(CustomerView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_UpdateCustomerButton1ActionPerformed
+        }else{
+            JOptionPane.showMessageDialog(null,"Please fill out the customer's details!");
+        }//End of if statement
+    }//GEN-LAST:event_UpdateCustomerButtonActionPerformed
 
     private void selectEntryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectEntryActionPerformed
 
@@ -530,66 +557,117 @@ public class CustomerView extends javax.swing.JFrame {
     //Button for customer to select driver, then update available list of driver with ETA calculated 
     //at the exact time the button is initiated, then simulate the trip using timer in Trip class.
     private void SelectDriverButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectDriverButtonActionPerformed
-        Time.CLT = time.current;
-        Time.DLT = time.current;
-        ratedrivername = selectEntry.getText();
-        String jname = nameEntry.getText();
-        String jdrivername = selectEntry.getText();
-        int jeta = Integer.parseInt(etaEntry.getText());
-        int jcapacity = Integer.parseInt(capacityEntry.getText());
-        double jcx = Double.parseDouble(CXEntry.getText());
-        double jcy = Double.parseDouble(CYEntry.getText());
-        double jdx = Double.parseDouble(DXEntry.getText());
-        double jdy = Double.parseDouble(DYEntry.getText());
-        driver.setStatus_Unavailable(jdrivername);
-        customer.setStatus_Waiting(jname);
+        if(!nameEntry.getText().isEmpty()&&!capacityEntry.getText().isEmpty()&&!etaEntry.getText().isEmpty()&&
+                !CXEntry.getText().isEmpty()&&!CYEntry.getText().isEmpty()&&
+                !DXEntry.getText().isEmpty()&&!DYEntry.getText().isEmpty()){
+            Time.CLT = time.current;
+            Time.DLT = time.current;
+            DriverList_UpdateTime.setText("List Last Updated Time : "+time.DLT);
+            ratedrivername = selectEntry.getText();
+            String jname = nameEntry.getText();
+            String jdrivername = selectEntry.getText();
+            int jeta = Integer.parseInt(etaEntry.getText());
+            int jcapacity = Integer.parseInt(capacityEntry.getText());
+            double jcx = Double.parseDouble(CXEntry.getText());
+            double jcy = Double.parseDouble(CYEntry.getText());
+            double jdx = Double.parseDouble(DXEntry.getText());
+            double jdy = Double.parseDouble(DYEntry.getText());
+            driver.setStatus_Unavailable(jdrivername);
+            customer.setStatus_Waiting(jname);
+            
+            try {
+                Graph graph = book.CustomerGraph(jname);
+                book.UpdateDriverEAT(graph, jname);
+                DBConnect db = new DBConnect();
+                con = db.connect();
+                String query = "select name,capacity,eat,rating from driver where status='Available' AND capacity>='" + jcapacity +"' AND eat<='" + jeta + "'";
+                PreparedStatement ps = this.con.prepareStatement(query);
+                ResultSet rs = ps.executeQuery(query);
+                ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+                DefaultTableModel model = (DefaultTableModel)DriverSelectionTable.getModel();
+                String name, capacity, eat,reputation;
+                model.setRowCount(0); //Clear all rows (Reset the table)
 
-        try {
-            Graph graph = book.CustomerGraph(jname);
-            book.UpdateDriverEAT(graph, jname);
-            DBConnect db = new DBConnect();
-            con = db.connect();
-            String query = "select name,capacity,eat,rating from driver where status='Available' AND capacity>='" + jcapacity +"' AND eat<='" + jeta + "'";
-            PreparedStatement ps = this.con.prepareStatement(query);
-            ResultSet rs = ps.executeQuery(query);
-            ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
-            DefaultTableModel model = (DefaultTableModel)DriverSelectionTable.getModel();
-            String name, capacity, eat,reputation;
-            model.setRowCount(0); //Clear all rows (Reset the table)
+                while(rs.next()){
+                    name=rs.getString(1);
+                    capacity=rs.getString(2);
+                    eat=rs.getString(3);
+                    reputation=rs.getString(4);
 
-            while(rs.next()){
-                name=rs.getString(1);
-                capacity=rs.getString(2);
-                eat=rs.getString(3);
-                reputation=rs.getString(4);
+                    String[] row={name, capacity, eat,reputation};
+                    model.addRow(row);
 
-                String[] row={name, capacity, eat,reputation};
-                model.addRow(row);
-
-            }
-            driver.setPassenger(jdrivername, jname);
-            trip.startTrip(jname, jdrivername, jcx, jcy, jdx, jdy, graph);
-            ps.close();
-            con.close();
-        } catch (SQLException ex) {
+                }
+                driver.setPassenger(jdrivername, jname);
+                trip.startTrip(jname, jdrivername, jcx, jcy, jdx, jdy, graph);
+                ps.close();
+                con.close();
+            } catch (SQLException ex) {
             Logger.getLogger(CustomerView.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            }
+        }else{
+            JOptionPane.showMessageDialog(null,"Please fill out the customer's details!");
+        }//End of if statement
 
     }//GEN-LAST:event_SelectDriverButtonActionPerformed
 
     //Button to add customer request to database and update available list of driver with ETA calculated
     //at the exact time the button is initiated.
     private void AddCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddCustomerButtonActionPerformed
-        Time.CLT = time.current;
-        String jname = nameEntry.getText();
-        int jeta = Integer.parseInt(etaEntry.getText());
-        int jcapacity = Integer.parseInt(capacityEntry.getText());
-        double jcx = Double.parseDouble(CXEntry.getText());
-        double jcy = Double.parseDouble(CYEntry.getText());
-        double jdx = Double.parseDouble(DXEntry.getText());
-        double jdy = Double.parseDouble(DYEntry.getText());
-        customer.addCustomer(jname, jeta, jcapacity, jcx, jcy, jdx, jdy);
+        if(!nameEntry.getText().isEmpty()&&!capacityEntry.getText().isEmpty()&&!etaEntry.getText().isEmpty()&&
+                !CXEntry.getText().isEmpty()&&!CYEntry.getText().isEmpty()&&
+                !DXEntry.getText().isEmpty()&&!DYEntry.getText().isEmpty()){
+            
+            Time.CLT = time.current;
+            Time.DLT = time.current;
+            DriverList_UpdateTime.setText("List Last Updated Time : "+time.DLT);
+            
+            String jname = nameEntry.getText();
+            int jeta = Integer.parseInt(etaEntry.getText());
+            int jcapacity = Integer.parseInt(capacityEntry.getText());
+            double jcx = Double.parseDouble(CXEntry.getText());
+            double jcy = Double.parseDouble(CYEntry.getText());
+            double jdx = Double.parseDouble(DXEntry.getText());
+            double jdy = Double.parseDouble(DYEntry.getText());
+            customer.addCustomer(jname, jeta, jcapacity, jcx, jcy, jdx, jdy);
+            JOptionPane.showMessageDialog(null,"Request received. Please choose your driver!");
 
+            try {
+                Graph graph = book.CustomerGraph(jname);
+                book.UpdateDriverEAT(graph, jname);
+                DBConnect db = new DBConnect();
+                con = db.connect();
+                String query = "select name,capacity,eat,rating from driver where status='Available' AND capacity>='" + jcapacity +"' AND eat<='" + jeta + "'";
+                PreparedStatement ps = this.con.prepareStatement(query);
+                ResultSet rs = ps.executeQuery(query);
+                ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+                DefaultTableModel model = (DefaultTableModel)DriverSelectionTable.getModel();
+                String name, capacity, eat,reputation;
+                model.setRowCount(0); //Clear all rows (Reset the table)
+                
+                while(rs.next()){
+                    name=rs.getString(1);
+                    capacity=rs.getString(2);
+                    eat=rs.getString(3);
+                    reputation=rs.getString(4);
+
+                    String[] row={name, capacity, eat,reputation};
+                    model.addRow(row);
+
+                }
+                ps.close();
+                con.close();
+
+            } catch (SQLException ex) {
+                Logger.getLogger(CustomerView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else{
+            JOptionPane.showMessageDialog(null,"Please fill out the customer's details!");
+        }//End of if statement
+
+    }//GEN-LAST:event_AddCustomerButtonActionPerformed
+
+    private void ClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearButtonActionPerformed
         nameEntry.setText("");
         capacityEntry.setText("");
         etaEntry.setText("");
@@ -597,39 +675,7 @@ public class CustomerView extends javax.swing.JFrame {
         CYEntry.setText("");
         DXEntry.setText("");
         DYEntry.setText("");
-        JOptionPane.showMessageDialog(null,"Request received. Please choose your driver!");
-
-        try {
-            Graph graph = book.CustomerGraph(jname);
-            book.UpdateDriverEAT(graph, jname);
-            DBConnect db = new DBConnect();
-            con = db.connect();
-            String query = "select name,capacity,eat,rating from driver where status='Available' AND capacity>='" + jcapacity +"' AND eat<='" + jeta + "'";
-            PreparedStatement ps = this.con.prepareStatement(query);
-            ResultSet rs = ps.executeQuery(query);
-            ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
-            DefaultTableModel model = (DefaultTableModel)DriverSelectionTable.getModel();
-            String name, capacity, eat,reputation;
-            model.setRowCount(0); //Clear all rows (Reset the table)
-            //timeLabel.setText("Current Time: "+ time.current);
-            while(rs.next()){
-                name=rs.getString(1);
-                capacity=rs.getString(2);
-                eat=rs.getString(3);
-                reputation=rs.getString(4);
-
-                String[] row={name, capacity, eat,reputation};
-                model.addRow(row);
-
-            }
-            ps.close();
-            con.close();
-
-        } catch (SQLException ex) {
-            Logger.getLogger(CustomerView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }//GEN-LAST:event_AddCustomerButtonActionPerformed
+    }//GEN-LAST:event_ClearButtonActionPerformed
 
    
     /**
@@ -672,6 +718,7 @@ public class CustomerView extends javax.swing.JFrame {
     private javax.swing.JButton BackButton;
     private javax.swing.JTextField CXEntry;
     private javax.swing.JTextField CYEntry;
+    private javax.swing.JButton ClearButton;
     private javax.swing.JTextField DXEntry;
     private javax.swing.JTextField DYEntry;
     private javax.swing.JLabel DriverList_UpdateTime;
@@ -687,7 +734,7 @@ public class CustomerView extends javax.swing.JFrame {
     private javax.swing.JButton RequestButton;
     private javax.swing.JButton SearchCustomerButton;
     private javax.swing.JButton SelectDriverButton;
-    private javax.swing.JButton UpdateCustomerButton1;
+    private javax.swing.JButton UpdateCustomerButton;
     private javax.swing.JTextField capacityEntry;
     private javax.swing.JTextField etaEntry;
     private javax.swing.JLabel jLabel1;

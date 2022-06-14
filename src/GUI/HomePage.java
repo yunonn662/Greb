@@ -4,13 +4,8 @@
  */
 package GUI;
 
-import static greb_app.Greb_App.count; 
 import static greb_app.Time.time;
 
-/**
- *
- * @author Yun Onn
- */
 public class HomePage extends javax.swing.JFrame {
     
 

@@ -10,10 +10,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Yun Onn
- */
+
 public class DriverManager {
     Connection con = null;
 

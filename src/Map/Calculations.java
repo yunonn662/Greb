@@ -1,14 +1,11 @@
 package Map;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+//import java.util.ArrayList;
+//import java.util.Collections;
+//import java.util.List;
 //import java.util.PriorityQueue;
 
-/**
- *
- * @author Yun Onn
- */
+
 public class Calculations {
 //    public static void computePaths(Vertex source)
 //    {

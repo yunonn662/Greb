@@ -60,6 +60,8 @@ public class AddRemoveDriver extends javax.swing.JFrame {
         DriverTable = new javax.swing.JTable();
         capacityEntry = new javax.swing.JTextField();
         timeLabel = new javax.swing.JLabel();
+        ClearButton = new javax.swing.JButton();
+        ShowButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -156,6 +158,22 @@ public class AddRemoveDriver extends javax.swing.JFrame {
         timeLabel.setText("Current Time : "+time.current);
         timeLabel.setPreferredSize(new java.awt.Dimension(140, 30));
 
+        ClearButton.setText("Clear");
+        ClearButton.setPreferredSize(new java.awt.Dimension(165, 38));
+        ClearButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ClearButtonActionPerformed(evt);
+            }
+        });
+
+        ShowButton.setText("Show Table");
+        ShowButton.setPreferredSize(new java.awt.Dimension(165, 38));
+        ShowButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ShowButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -165,7 +183,7 @@ public class AddRemoveDriver extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 1125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                         .addComponent(BackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(21, 21, 21))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -174,65 +192,61 @@ public class AddRemoveDriver extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(Jname, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, Short.MAX_VALUE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(Jcapacity, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGap(2, 2, 2)))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(capacityEntry, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
-                                    .addComponent(nameEntry))
-                                .addGap(457, 457, 457))
+                                    .addComponent(Jcapacity, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Jlatitude, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Jlongitude, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Jname, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(capacityEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(xEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(yEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(AddDriverButton, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(RemoveDriverButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(Jlatitude, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(yEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(Jlongitude, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(xEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                                .addGap(148, 148, 148)
+                                .addComponent(nameEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(AddDriverButton, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ClearButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(RemoveDriverButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(217, 217, 217))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(DriverList_UpdateTime, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 1062, Short.MAX_VALUE))))
+                        .addGap(324, 324, 324)
+                        .addComponent(ShowButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(79, 79, 79)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Jname, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Jname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nameEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Jcapacity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(capacityEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Jlongitude, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(xEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Jlatitude, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(yEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(AddDriverButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(RemoveDriverButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(26, 128, Short.MAX_VALUE)
+                        .addComponent(timeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25)
+                        .addComponent(DriverList_UpdateTime, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(timeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(25, 25, 25)
-                .addComponent(DriverList_UpdateTime, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Jcapacity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(capacityEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(AddDriverButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Jlongitude, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(xEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(RemoveDriverButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(yEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Jlatitude, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ClearButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ShowButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(BackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -244,11 +258,11 @@ public class AddRemoveDriver extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -256,89 +270,92 @@ public class AddRemoveDriver extends javax.swing.JFrame {
 
     //Button to add driver in the database, update and show the driver list.
     private void AddDriverButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddDriverButtonActionPerformed
+        if(!nameEntry.getText().isEmpty()&&!capacityEntry.getText().isEmpty()&&
+                !xEntry.getText().isEmpty()&&!yEntry.getText().isEmpty()){
         Time.DLT = time.current;
         String jname = nameEntry.getText();
         int jcapacity = Integer.parseInt(capacityEntry.getText());
         double x = Double.parseDouble(xEntry.getText());
         double y = Double.parseDouble(yEntry.getText());
         driver.addDriver(jname, jcapacity, x, y);
-        nameEntry.setText("");
-        capacityEntry.setText("");
-        xEntry.setText("");
-        yEntry.setText("");
+
         JOptionPane.showMessageDialog(null,"Driver Registered!");
-        
-        try {
-            DBConnect db = new DBConnect();
-            con = db.connect();
-            String query = "select name,status,capacity,longitude,latitude,passenger from driver";
-            PreparedStatement ps = this.con.prepareStatement(query);
-            ResultSet rs = ps.executeQuery(query);
-            ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
-            DefaultTableModel model = (DefaultTableModel)DriverTable.getModel();
-            String name, status, customer,capacity,longitude,latitude;
-            model.setRowCount(0); //Clear all rows (Reset the table)
-            timeLabel.setText("Current Time: "+ time.current);
-            while(rs.next()){
-                name=rs.getString(1);
-                status=rs.getString(2);
-                capacity=rs.getString(3);
-                longitude=rs.getString(4);
-                latitude=rs.getString(5);
-                customer=rs.getString(6);
+        DriverList_UpdateTime.setText("List Last Updated Time : "+Time.DLT);
+            try {
+                DBConnect db = new DBConnect();
+                con = db.connect();
+                String query = "select name,status,capacity,longitude,latitude,passenger from driver";
+                PreparedStatement ps = this.con.prepareStatement(query);
+                ResultSet rs = ps.executeQuery(query);
+                ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+                DefaultTableModel model = (DefaultTableModel)DriverTable.getModel();
+                String name, status, customer,capacity,longitude,latitude;
+                model.setRowCount(0); //Clear all rows (Reset the table)
+                timeLabel.setText("Current Time: "+ time.current);
+                while(rs.next()){
+                    name=rs.getString(1);
+                    status=rs.getString(2);
+                    capacity=rs.getString(3);
+                    longitude=rs.getString(4);
+                    latitude=rs.getString(5);
+                    customer=rs.getString(6);
                 
-                String[] row={name, status, capacity,longitude,latitude, customer};
-                model.addRow(row);
+                    String[] row={name, status, capacity,longitude,latitude, customer};
+                    model.addRow(row);
                         
+                }
+                ps.close();
+                con.close();
             }
-            ps.close();
-            con.close();
-        }
-        catch (SQLException ex) {
-            Logger.getLogger(CustomerManager.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            catch (SQLException ex) {
+                Logger.getLogger(CustomerManager.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else{
+            JOptionPane.showMessageDialog(null,"Please fill out the driver's details!");
+        }//End of if statement
     }//GEN-LAST:event_AddDriverButtonActionPerformed
 
     //Button to remove driver from the database, update and show the driver list.
     private void RemoveDriverButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveDriverButtonActionPerformed
-        Time.DLT = time.current;
-        String jname = nameEntry.getText();
-        driver.removeDriver(jname);
-        nameEntry.setText("");
-        capacityEntry.setText("");
-        xEntry.setText("");
-        yEntry.setText("");
-        JOptionPane.showMessageDialog(null,"Driver Removed!");
-        
-         try {
-            DBConnect db = new DBConnect();
-            con = db.connect();
-            String query = "select name,status,capacity,longitude,latitude,passenger from driver";
-            PreparedStatement ps = this.con.prepareStatement(query);
-            ResultSet rs = ps.executeQuery(query);
-            ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
-            DefaultTableModel model = (DefaultTableModel)DriverTable.getModel();
-            String name, status, customer,capacity,longitude,latitude;
-            model.setRowCount(0); //Clear all rows (Reset the table)
+        if(!nameEntry.getText().isEmpty()){
+            Time.DLT = time.current;
+            String jname = nameEntry.getText();
+            driver.removeDriver(jname);
+
+            JOptionPane.showMessageDialog(null,"Driver Removed!");
+            DriverList_UpdateTime.setText("List Last Updated Time : "+Time.DLT);
+            try {
+                DBConnect db = new DBConnect();
+                con = db.connect();
+                String query = "select name,status,capacity,longitude,latitude,passenger from driver";
+                PreparedStatement ps = this.con.prepareStatement(query);
+                ResultSet rs = ps.executeQuery(query);
+                ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+                DefaultTableModel model = (DefaultTableModel)DriverTable.getModel();
+                String name, status, customer,capacity,longitude,latitude;
+                model.setRowCount(0); //Clear all rows (Reset the table)
             
-            while(rs.next()){
-                name=rs.getString(1);
-                status=rs.getString(2);
-                capacity=rs.getString(3);
-                longitude=rs.getString(4);
-                latitude=rs.getString(5);
-                customer=rs.getString(6);
+                while(rs.next()){
+                    name=rs.getString(1);
+                    status=rs.getString(2);
+                    capacity=rs.getString(3);
+                    longitude=rs.getString(4);
+                    latitude=rs.getString(5);
+                    customer=rs.getString(6);
                 
-                String[] row={name, status, capacity,longitude,latitude, customer};
-                model.addRow(row);
+                    String[] row={name, status, capacity,longitude,latitude, customer};
+                    model.addRow(row);
                         
+                }
+                ps.close();
+                con.close();
             }
-            ps.close();
-            con.close();
-        }
-        catch (SQLException ex) {
-            Logger.getLogger(CustomerManager.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            catch (SQLException ex) {
+                Logger.getLogger(CustomerManager.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else{
+            JOptionPane.showMessageDialog(null,"Please provide driver's name to remove!");
+        }//End of if statement
     }//GEN-LAST:event_RemoveDriverButtonActionPerformed
 
     private void yEntryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yEntryActionPerformed
@@ -362,6 +379,46 @@ public class AddRemoveDriver extends javax.swing.JFrame {
         new HomePage().setVisible(true);
         dispose();
     }//GEN-LAST:event_BackButtonActionPerformed
+
+    private void ClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearButtonActionPerformed
+        nameEntry.setText("");
+        capacityEntry.setText("");
+        xEntry.setText("");
+        yEntry.setText("");
+
+    }//GEN-LAST:event_ClearButtonActionPerformed
+
+    private void ShowButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowButtonActionPerformed
+        try {
+                DBConnect db = new DBConnect();
+                con = db.connect();
+                String query = "select name,status,capacity,longitude,latitude,passenger from driver";
+                PreparedStatement ps = this.con.prepareStatement(query);
+                ResultSet rs = ps.executeQuery(query);
+                ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+                DefaultTableModel model = (DefaultTableModel)DriverTable.getModel();
+                String name, status, customer,capacity,longitude,latitude;
+                model.setRowCount(0); //Clear all rows (Reset the table)
+            
+                while(rs.next()){
+                    name=rs.getString(1);
+                    status=rs.getString(2);
+                    capacity=rs.getString(3);
+                    longitude=rs.getString(4);
+                    latitude=rs.getString(5);
+                    customer=rs.getString(6);
+                
+                    String[] row={name, status, capacity,longitude,latitude, customer};
+                    model.addRow(row);
+                        
+                }
+                ps.close();
+                con.close();
+            }
+            catch (SQLException ex) {
+                Logger.getLogger(CustomerManager.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }//GEN-LAST:event_ShowButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -402,6 +459,7 @@ public class AddRemoveDriver extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddDriverButton;
     private javax.swing.JButton BackButton;
+    private javax.swing.JButton ClearButton;
     private javax.swing.JLabel DriverList_UpdateTime;
     private javax.swing.JTable DriverTable;
     private javax.swing.JLabel Jcapacity;
@@ -409,6 +467,7 @@ public class AddRemoveDriver extends javax.swing.JFrame {
     private javax.swing.JLabel Jlongitude;
     private javax.swing.JLabel Jname;
     private javax.swing.JButton RemoveDriverButton;
+    private javax.swing.JButton ShowButton;
     private javax.swing.JTextField capacityEntry;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane4;

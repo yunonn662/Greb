@@ -18,10 +18,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-/**
- *
- * @author Yun Onn
- */
 public class Book {
     Connection con = null;
 
