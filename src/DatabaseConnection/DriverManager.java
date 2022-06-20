@@ -21,7 +21,7 @@ public class DriverManager {
             DBConnect db = new DBConnect();
             con = db.connect();
             String query = "insert into driver values(?,?,?,?,5,'Available',null,null)"; //We set all driver's rating as 5 by default.
-            PreparedStatement ps = con.prepareStatement(query);
+            PreparedStatement ps = con.prepareStatement(query); //PreparedStatement is a pre-compiled SQL statement to execute a parameterized query.
             ps.setString(1, name);
             ps.setInt(2, capacity);
             ps.setDouble(3, longitude);
@@ -40,7 +40,7 @@ public class DriverManager {
             DBConnect db = new DBConnect();
             con = db.connect();
             String query = "Delete from driver where name='"+name+"'";
-            PreparedStatement ps = con.prepareStatement(query);
+            PreparedStatement ps = con.prepareStatement(query); //PreparedStatement is a pre-compiled SQL statement to execute a parameterized query.
             ps.executeUpdate();
 
             System.out.println("Driver removed successfully.");
@@ -57,7 +57,7 @@ public class DriverManager {
             con = db.connect();
             String query = "Update driver set capacity='" + capacity +"'," +"longitude ='"+longitude+"',"+
                     "latitude='"+latitude+"'"+ "rating='" + rating + "'where name='"+name+"'";
-            PreparedStatement ps = con.prepareStatement(query);
+            PreparedStatement ps = con.prepareStatement(query); //PreparedStatement is a pre-compiled SQL statement to execute a parameterized query.
             ps.executeUpdate();
             System.out.println("Driver updated successfully.");
             con.close();
@@ -71,7 +71,7 @@ public class DriverManager {
         DBConnect db = new DBConnect();
             con = db.connect();
             String query = "Select * from driver where name=?";
-            PreparedStatement ps = this.con.prepareStatement(query);
+            PreparedStatement ps = this.con.prepareStatement(query); //PreparedStatement is a pre-compiled SQL statement to execute a parameterized query.
             ps.setString(1, name);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -91,7 +91,7 @@ public class DriverManager {
             DBConnect db = new DBConnect();
             con = db.connect();
             String query = "Update driver set rating='" + rating + "' where name ='" + name + "'";
-            PreparedStatement ps = con.prepareStatement(query);
+            PreparedStatement ps = con.prepareStatement(query); //PreparedStatement is a pre-compiled SQL statement to execute a parameterized query.
             ps.executeUpdate();
             System.out.println("Driver rating updated successfully.");
             con.close();
@@ -108,7 +108,8 @@ public class DriverManager {
             DBConnect db = new DBConnect();
             con = db.connect();
             String query = "select * from driver";
-            PreparedStatement ps = con.prepareStatement(query);
+            
+            PreparedStatement ps = con.prepareStatement(query); //PreparedStatement is a pre-compiled SQL statement to execute a parameterized query.
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 driverNames.add(new Driver(rs.getString("name"),rs.getInt("capacity"),rs.getDouble("longitude"),
@@ -127,7 +128,8 @@ public class DriverManager {
             DBConnect db = new DBConnect();
             con = db.connect();
             String query = "Update driver set passenger = '"+customerName+"' where name='" + name + "'" ;
-            PreparedStatement ps = con.prepareStatement(query);
+            
+            PreparedStatement ps = con.prepareStatement(query); //PreparedStatement is a pre-compiled SQL statement to execute a parameterized query.
             ps.executeUpdate();
             System.out.println("Driver's customer updated successfully.");
             con.close();
@@ -143,7 +145,8 @@ public class DriverManager {
             DBConnect db = new DBConnect();
             con = db.connect();
             String query = "Update driver set status = 'Not Available' where name='" + name + "'";
-            PreparedStatement ps = con.prepareStatement(query);
+            
+            PreparedStatement ps = con.prepareStatement(query); //PreparedStatement is a pre-compiled SQL statement to execute a parameterized query.
             ps.executeUpdate();
             System.out.println("Driver status updated successfully.");
             con.close();
@@ -159,7 +162,8 @@ public class DriverManager {
             DBConnect db = new DBConnect();
             con = db.connect();
             String query = "Update driver set status = 'Available' where name='"+name+"'";
-            PreparedStatement ps = con.prepareStatement(query);
+            
+            PreparedStatement ps = con.prepareStatement(query); //PreparedStatement is a pre-compiled SQL statement to execute a parameterized query.
             ps.executeUpdate();
             if(ps.execute()){
                 System.out.println("Driver status updated successfully.");
@@ -181,7 +185,8 @@ public class DriverManager {
             con = db.connect();
             String query = "Update driver set longitude ='" + x + "',"+
                     "latitude='" + y + "'where name='" + name + "'";
-            PreparedStatement ps = con.prepareStatement(query);
+            
+            PreparedStatement ps = con.prepareStatement(query); //PreparedStatement is a pre-compiled SQL statement to execute a parameterized query.
             ps.executeUpdate();
             System.out.println("Driver Location updated successfully.");
             con.close();
@@ -196,7 +201,8 @@ public class DriverManager {
             DBConnect db = new DBConnect();
             con = db.connect();
             String query = "Update driver set passenger = null where name='" + drivername + "'" ;
-            PreparedStatement ps = con.prepareStatement(query);
+            
+            PreparedStatement ps = con.prepareStatement(query); //PreparedStatement is a pre-compiled SQL statement to execute a parameterized query.
             ps.executeUpdate();
             System.out.println("Driver's customer updated to 'NULL' successfully.");
             con.close();

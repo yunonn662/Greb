@@ -201,14 +201,14 @@ public class Dashboard extends javax.swing.JFrame {
             DBConnect db = new DBConnect();
             con = db.connect();
             String query = "select name,status,eta,capacity,current_X,current_Y,dest_X,dest_Y from customer";
-            PreparedStatement ps = this.con.prepareStatement(query);
-            ResultSet rs = ps.executeQuery(query);
-            ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+            PreparedStatement ps = this.con.prepareStatement(query); //PreparedStatement is a pre-compiled SQL statement to execute a parameterized query.
+            ResultSet rs = ps.executeQuery(query); //Resultset contains the results of executing an SQL query.
+            ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData(); //Used to get the metadata about a ResultSet object
             DefaultTableModel model = (DefaultTableModel)AdminCustomerTable.getModel();
             String name,status,eta,capacity,current_X,current_Y,dest_X,dest_Y;
             model.setRowCount(0); //Clear all rows (Reset the table)
             
-            while(rs.next()){
+            while(rs.next()){ //The while loop gets all the existing customer requests on the database and display it on the table frame.
                 name=rs.getString(1);
                 status=rs.getString(2);
                 eta=rs.getString(3);
@@ -236,14 +236,14 @@ public class Dashboard extends javax.swing.JFrame {
             DBConnect db = new DBConnect();
             con = db.connect();
             String query = "select name,status,capacity,longitude,latitude,passenger from driver";
-            PreparedStatement ps = this.con.prepareStatement(query);
-            ResultSet rs = ps.executeQuery(query);
-            ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+            PreparedStatement ps = this.con.prepareStatement(query); //PreparedStatement is a pre-compiled SQL statement to execute a parameterized query.
+            ResultSet rs = ps.executeQuery(query); //Resultset contains the results of executing an SQL query.
+            ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData(); //Used to get the metadata about a ResultSet object
             DefaultTableModel model = (DefaultTableModel)AdminDriverTable.getModel();
             String name, status, customer,capacity,longitude,latitude;
             model.setRowCount(0); //Clear all rows (Reset the table)
             
-            while(rs.next()){
+            while(rs.next()){ //The while loop gets all the existing driver on the database and display it on the table frame.
                 name=rs.getString(1);
                 status=rs.getString(2);
                 capacity=rs.getString(3);

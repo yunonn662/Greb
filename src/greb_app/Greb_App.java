@@ -1,7 +1,7 @@
 package greb_app;
 
 import GUI.HomePage;
-import static greb_app.Time.time; //This is crucial to sync the whole system, it must be imported into all classes that uses time
+import static greb_app.Time.time; 
 
 
 public class Greb_App{

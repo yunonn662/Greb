@@ -122,7 +122,7 @@ public class FeedBack extends javax.swing.JFrame {
     
     //Button to update Driver Rating and auto close frame.
     private void RateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RateButtonActionPerformed
-        driver.setRating(CustomerView.ratedrivername,(double)jSpinner1.getValue());
+        driver.setRating(CustomerView.ratedrivername,(double)jSpinner1.getValue()); //Updating the rating of the driver upon ending the trip.
         dispose();
     }//GEN-LAST:event_RateButtonActionPerformed
 

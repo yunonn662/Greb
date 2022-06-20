@@ -23,7 +23,8 @@ public class CustomerManager
             DBConnect db = new DBConnect();
             con = db.connect();
             String query = "insert into customer values(?,?,?,?,?,?,?,'Pending')";
-            PreparedStatement ps = this.con.prepareStatement(query);
+            
+            PreparedStatement ps = this.con.prepareStatement(query); //PreparedStatement is a pre-compiled SQL statement to execute a parameterized query.
             ps.setString(1, name);
             ps.setInt(2, ETA);
             ps.setInt(3, capacity);
@@ -46,7 +47,8 @@ public class CustomerManager
             DBConnect db = new DBConnect();
             con = db.connect();
             String query = "Delete from customer where name='"+name+"'";
-            PreparedStatement ps = this.con.prepareStatement(query);
+            
+            PreparedStatement ps = this.con.prepareStatement(query); //PreparedStatement is a pre-compiled SQL statement to execute a parameterized query.
             ps.executeUpdate();
             System.out.println("Customer removed successfully.");
             con.close();
@@ -65,7 +67,8 @@ public class CustomerManager
                     +"capacity='" + capacity +"',"+"current_X='" + current_X + "'," +
                     "current_Y='" + current_Y + "'," + "dest_X='" + dest_X + "'," + 
                     "dest_Y='" + dest_Y + "' where name='"+name+"'";
-            PreparedStatement ps = this.con.prepareStatement(query);
+            
+            PreparedStatement ps = this.con.prepareStatement(query); //PreparedStatement is a pre-compiled SQL statement to execute a parameterized query.
             ps.executeUpdate();
             System.out.println("Customer updated successfully.");
             con.close();
@@ -80,7 +83,8 @@ public class CustomerManager
             DBConnect db = new DBConnect();
             con = db.connect();
             String query = "Select * from customer where name=?";
-            PreparedStatement ps = this.con.prepareStatement(query);
+            
+            PreparedStatement ps = this.con.prepareStatement(query); //PreparedStatement is a pre-compiled SQL statement to execute a parameterized query.
             ps.setString(1, name);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -99,7 +103,8 @@ public class CustomerManager
         DBConnect db = new DBConnect();
             con = db.connect();
             String query = "Select * from customer where name=?";
-            PreparedStatement ps = this.con.prepareStatement(query);
+            
+            PreparedStatement ps = this.con.prepareStatement(query); //PreparedStatement is a pre-compiled SQL statement to execute a parameterized query.
             ps.setString(1, name);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -118,7 +123,8 @@ public class CustomerManager
             DBConnect db = new DBConnect();
             con = db.connect();
             String query = "Update customer set status = 'Waiting' where name='"+name+"'";
-            PreparedStatement ps = con.prepareStatement(query);
+            
+            PreparedStatement ps = con.prepareStatement(query); //PreparedStatement is a pre-compiled SQL statement to execute a parameterized query.
             ps.executeUpdate();
             System.out.println("Customer status updated successfully.");
             con.close();
@@ -133,7 +139,8 @@ public class CustomerManager
             DBConnect db = new DBConnect();
             con = db.connect();
             String query = "Update customer set status = 'Pending' where name='"+name+"'";
-            PreparedStatement ps = con.prepareStatement(query);
+            
+            PreparedStatement ps = con.prepareStatement(query); //PreparedStatement is a pre-compiled SQL statement to execute a parameterized query.
             ps.executeUpdate();
             System.out.println("Customer status updated successfully.");
             con.close();
@@ -148,7 +155,8 @@ public class CustomerManager
             DBConnect db = new DBConnect();
             con = db.connect();
             String query = "Update customer set status = 'Picked Up' where name='"+name+"'";
-            PreparedStatement ps = con.prepareStatement(query);
+            
+            PreparedStatement ps = con.prepareStatement(query); //PreparedStatement is a pre-compiled SQL statement to execute a parameterized query.
             ps.executeUpdate();
             System.out.println("Customer status updated successfully.");
             con.close();
@@ -163,7 +171,8 @@ public class CustomerManager
             DBConnect db = new DBConnect();
             con = db.connect();
             String query = "Update customer set status = 'Reached' where name='"+name+"'";
-            PreparedStatement ps = con.prepareStatement(query);
+            
+            PreparedStatement ps = con.prepareStatement(query); //PreparedStatement is a pre-compiled SQL statement to execute a parameterized query.
             ps.executeUpdate();
             System.out.println("Customer status updated successfully.");
             con.close();
@@ -179,7 +188,8 @@ public class CustomerManager
             con = db.connect();
             String query = "Update customer set current_X ='" + x + "',"+
                     "current_Y='" + y + "'where name='" + name + "'";
-            PreparedStatement ps = con.prepareStatement(query);
+            
+            PreparedStatement ps = con.prepareStatement(query); //PreparedStatement is a pre-compiled SQL statement to execute a parameterized query.
             ps.executeUpdate();
             System.out.println("Driver Location updated successfully.");
             con.close();

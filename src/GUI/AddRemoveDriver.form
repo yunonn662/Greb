@@ -46,34 +46,25 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="jScrollPane4" min="-2" pref="1125" max="-2" attributes="0"/>
-                          <EmptySpace pref="38" max="32767" attributes="0"/>
-                          <Component id="BackButton" min="-2" pref="90" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                      </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="timeLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="160" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="timeLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="160" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="Jcapacity" alignment="1" min="-2" pref="130" max="-2" attributes="0"/>
                                       <Component id="Jlatitude" min="-2" pref="130" max="-2" attributes="0"/>
-                                      <Component id="Jlongitude" alignment="1" min="-2" pref="130" max="-2" attributes="0"/>
-                                      <Component id="Jname" alignment="1" min="-2" pref="130" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="capacityEntry" alignment="0" min="-2" pref="367" max="-2" attributes="0"/>
-                                      <Component id="xEntry" min="-2" pref="367" max="-2" attributes="0"/>
-                                      <Component id="yEntry" min="-2" pref="367" max="-2" attributes="0"/>
+                                      <Component id="Jlongitude" alignment="0" min="-2" pref="130" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="148" max="-2" attributes="0"/>
-                                  <Component id="nameEntry" min="-2" pref="367" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="Jname" min="-2" pref="130" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="capacityEntry" alignment="0" min="-2" pref="367" max="-2" attributes="0"/>
+                              <Component id="xEntry" min="-2" pref="367" max="-2" attributes="0"/>
+                              <Component id="yEntry" min="-2" pref="367" max="-2" attributes="0"/>
+                              <Component id="nameEntry" alignment="0" min="-2" pref="367" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -85,58 +76,67 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="DriverList_UpdateTime" min="-2" pref="210" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="324" max="-2" attributes="0"/>
-                          <Component id="ShowButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                  <Component id="jScrollPane4" min="-2" pref="1125" max="-2" attributes="0"/>
+                  <EmptySpace pref="28" max="32767" attributes="0"/>
+                  <Component id="BackButton" min="-2" pref="90" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="541" max="-2" attributes="0"/>
+                  <Component id="ShowButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="69" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="Jname" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="nameEntry" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="26" pref="128" max="32767" attributes="0"/>
-                          <Component id="timeLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                          <Component id="DriverList_UpdateTime" min="-2" pref="32" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="Jcapacity" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="capacityEntry" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                              <Component id="AddDriverButton" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="Jlongitude" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="xEntry" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                              <Component id="RemoveDriverButton" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="yEntry" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                              <Component id="Jlatitude" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="ClearButton" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="ShowButton" min="-2" pref="32" max="-2" attributes="0"/>
-                      </Group>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="Jcapacity" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="capacityEntry" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="AddDriverButton" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="BackButton" min="-2" pref="34" max="-2" attributes="0"/>
-                      <Component id="jScrollPane4" min="-2" pref="378" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="Jlongitude" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="xEntry" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="RemoveDriverButton" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="timeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="Jlatitude" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="yEntry" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="ClearButton" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                  <Component id="DriverList_UpdateTime" min="-2" pref="32" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace type="separate" max="32767" attributes="0"/>
+                          <Component id="BackButton" min="-2" pref="34" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace pref="17" max="32767" attributes="0"/>
+                          <Component id="ShowButton" min="-2" pref="32" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="jScrollPane4" min="-2" pref="378" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>

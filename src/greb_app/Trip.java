@@ -41,10 +41,10 @@ public class Trip {
                 t1.schedule(new TimerTask() { //First timer is to simulate Driver picking up Customer.
                     @Override
                     public void run() {
-                        driver.UpdateDriverLocation(jdrivername, jcx, jcy);
-                        customer.setStatus_PickedUp(jname);
-                        Time.CLT = Time.current;
-                        Time.DLT = Time.current;
+                        driver.UpdateDriverLocation(jdrivername, jcx, jcy); //Update the location of the driver to customer's current location
+                        customer.setStatus_PickedUp(jname); //Updating the status of the customer to 'Picked Up'
+                        Time.CLT = Time.current; //Update Last Updated Time of Customer Table
+                        Time.DLT = Time.current; //Update Last Updated Time of Driver Table
                         JOptionPane.showMessageDialog(null,jname+" is picked up by "+jdrivername);
                         
 
@@ -56,16 +56,16 @@ public class Trip {
                 t2.schedule(new TimerTask() { //Second timer is to simulate Customer finishes the trip.
                     @Override
                     public void run() {
-                        driver.UpdateDriverLocation(jdrivername, jdx, jdy);
-                        customer.UpdateCustomerLocation(jname, jdx, jdy);
-                        customer.setStatus_Reached(jname);
-                        driver.removePassenger(jdrivername);
-                        driver.setStatus_Available(jdrivername);
-                        Time.CLT = Time.current;
-                        Time.DLT = Time.current;
+                        driver.UpdateDriverLocation(jdrivername, jdx, jdy); //Update the location of the driver to customer's destination
+                        customer.UpdateCustomerLocation(jname, jdx, jdy); //Update the location of the customer to their destination
+                        customer.setStatus_Reached(jname);  //Updating the status of the customer to 'Reached'
+                        driver.removePassenger(jdrivername);  //Removing the passenger of the driver upon completing the trip
+                        driver.setStatus_Available(jdrivername); //Updating the status of the driver to 'Available'
+                        Time.CLT = Time.current; //Update Last Updated Time of Customer Table
+                        Time.DLT = Time.current; //Update Last Updated Time of Driver Table
                         JOptionPane.showMessageDialog(null,jname+" has reached his/her destination safely!");
-                        FeedBack fb = new FeedBack();
-                        fb.setVisible(true);
+                        FeedBack fb = new FeedBack(); 
+                        fb.setVisible(true); //Show the FeedBack GUI
 
 
                     }

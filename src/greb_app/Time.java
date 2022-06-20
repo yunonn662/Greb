@@ -54,8 +54,8 @@ public class Time {
         
         String option ="";
         if(plusMinute==0) //Argument 0 means to get current time
-            
             option = "A";
+        
         if(plusMinute==1)
             option = "B"; //Argument 1 means to add 1 minute to current time
                           //Helps simulate 1 minute = 1 second environment.
@@ -161,8 +161,8 @@ public class Time {
     //Method to calculate Estimated Arrival Time using processed duration and add on current time.
     public String calculateETA(String time,int duration){
         String eta;
-        int hour = Integer.parseInt(time.substring(0,2));
-        int min = Integer.parseInt(time.substring(2,4));
+        int hour = Integer.parseInt(time.substring(0,2)); //Getting the first 2 number in the 24 hour format time.
+        int min = Integer.parseInt(time.substring(2,4)); //Getting the last 2 number in the 24 hour format time.
         int addHour = duration/60;
         int addMinute = duration%60;
                 min += addMinute;

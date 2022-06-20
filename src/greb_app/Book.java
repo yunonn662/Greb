@@ -57,7 +57,7 @@ public class Book {
             DBConnect db = new DBConnect();
             con = db.connect();
             String query = "Update driver set eat='"+EAT+"'where name='"+driverName.getName()+"'";
-            PreparedStatement ps = con.prepareStatement(query);
+            PreparedStatement ps = con.prepareStatement(query); //PreparedStatement is a pre-compiled SQL statement to execute a parameterized query.
             ps.executeUpdate();
             con.close();
         } catch (SQLException ex) {

@@ -153,31 +153,26 @@ public class HomePage extends javax.swing.JFrame {
 
     private void AdminDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminDashboardButtonActionPerformed
         Dashboard dashboard = new Dashboard();
-//        if(count <= 0){ //Not sure if I need this block of code yet, ignore it
-//            time.CLT = time.current;
-//            time.DLT = time.current;
-//        }
-//        count++;
-        dashboard.show();
-        dispose();
+        dashboard.setVisible(true); //Show the dashboard GUI
+        dispose(); //Closes the HomePage GUI.
     }//GEN-LAST:event_AdminDashboardButtonActionPerformed
 
     private void CustomerViewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CustomerViewButtonActionPerformed
         CustomerView cv = new CustomerView();
-        cv.show();
-        dispose();
+        cv.setVisible(true); //Show the CustomerView GUI
+        dispose(); //Closes the HomePage GUI.
     }//GEN-LAST:event_CustomerViewButtonActionPerformed
 
     private void AddRemoveDriverButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddRemoveDriverButtonActionPerformed
         AddRemoveDriver arDriver = new AddRemoveDriver();
-        arDriver.show();
-        dispose();
+        arDriver.setVisible(true); //Show the add/remove driver GUI
+        dispose(); //Closes the HomePage GUI.
     }//GEN-LAST:event_AddRemoveDriverButtonActionPerformed
 
     private void ExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitButtonActionPerformed
-        time.stop();
-        System.exit(0);
-        dispose();
+        time.stop(); //Stop the environment time
+        System.exit(0); //End the application
+        dispose(); //Closes the HomePage GUI.
         
     }//GEN-LAST:event_ExitButtonActionPerformed
 

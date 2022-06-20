@@ -307,7 +307,7 @@ public class CustomerView extends javax.swing.JFrame {
                 .addGap(44, 44, 44)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 24, Short.MAX_VALUE)
                         .addComponent(AddCustomerButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(UpdateCustomerButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -330,13 +330,13 @@ public class CustomerView extends javax.swing.JFrame {
                             .addComponent(Jname, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(nameEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(Jeta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(etaEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(capacityEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Jcapacity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(Jcapacity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(capacityEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Jcapacity3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -391,10 +391,10 @@ public class CustomerView extends javax.swing.JFrame {
     private void RequestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RequestButtonActionPerformed
         if(!nameEntry.getText().isEmpty()&&!capacityEntry.getText().isEmpty()&&!etaEntry.getText().isEmpty()&&
                 !CXEntry.getText().isEmpty()&&!CYEntry.getText().isEmpty()&&
-                !DXEntry.getText().isEmpty()&&!DYEntry.getText().isEmpty()){
+                !DXEntry.getText().isEmpty()&&!DYEntry.getText().isEmpty()){ //Make sure user fill up all the text field
             
-            Time.DLT = time.current;
-            DriverList_UpdateTime.setText("List Last Updated Time : "+time.DLT);
+            Time.DLT = time.current; //Update Last Updated Time of Driver Table
+            DriverList_UpdateTime.setText("List Last Updated Time : "+time.DLT); //Jlable for showing the updated time of Driver Table
             String jname = nameEntry.getText();
             int jeta = Integer.parseInt(etaEntry.getText());
             int jcapacity = Integer.parseInt(capacityEntry.getText());
@@ -408,20 +408,20 @@ public class CustomerView extends javax.swing.JFrame {
                 DBConnect db = new DBConnect();
                 con = db.connect();
                 String query = "select name,capacity,eat,rating from driver where status='Available' AND capacity>='" + jcapacity + "' AND eat<='" + jeta + "'";
-                PreparedStatement ps = this.con.prepareStatement(query);
-                ResultSet rs = ps.executeQuery(query);
-                ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
-                DefaultTableModel model = (DefaultTableModel)DriverSelectionTable.getModel();
+                PreparedStatement ps = this.con.prepareStatement(query); //PreparedStatement is a pre-compiled SQL statement to execute a parameterized query.
+                ResultSet rs = ps.executeQuery(query); //Resultset contains the results of executing an SQL query.
+                ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData(); //Used to get the metadata about a ResultSet object
+                DefaultTableModel model = (DefaultTableModel)DriverSelectionTable.getModel(); //JTable
                 String name, capacity, eat,reputation;
                 model.setRowCount(0); //Clear all rows (Reset the table)
-                //timeLabel.setText("Current Time: "+ time.current);
-                while(rs.next()){
+                
+                while(rs.next()){ //The while loop gets all the existing driver on the database and display it on the table frame.
                     name=rs.getString(1);
                     capacity=rs.getString(2);
                     eat=rs.getString(3);
                     reputation=rs.getString(4);
 
-                    String[] row={name, capacity, eat,reputation};
+                    String[] row={name, capacity, eat,reputation}; //Row of details to be added into the table
                     model.addRow(row);
 
                 }
@@ -442,9 +442,9 @@ public class CustomerView extends javax.swing.JFrame {
                 DBConnect db = new DBConnect();
                 con = db.connect();
                 String str = "Select * from customer where name=?";
-                PreparedStatement pstm = con.prepareStatement(str);
+                PreparedStatement pstm = con.prepareStatement(str); //PreparedStatement is a pre-compiled SQL statement to execute a parameterized query.
                 pstm.setString(1, nameEntry.getText());
-                ResultSet rs = pstm.executeQuery();
+                ResultSet rs = pstm.executeQuery(); //Resultset contains the results of executing an SQL query.
                 if(rs.next()){
                     nameEntry.setText(rs.getString("name"));
                     etaEntry.setText(rs.getString("eta"));
@@ -471,11 +471,11 @@ public class CustomerView extends javax.swing.JFrame {
     private void UpdateCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateCustomerButtonActionPerformed
         if(!nameEntry.getText().isEmpty()&&!capacityEntry.getText().isEmpty()&&!etaEntry.getText().isEmpty()&&
                 !CXEntry.getText().isEmpty()&&!CYEntry.getText().isEmpty()&&
-                !DXEntry.getText().isEmpty()&&!DYEntry.getText().isEmpty()){
+                !DXEntry.getText().isEmpty()&&!DYEntry.getText().isEmpty()){ //Make sure user fill up all the text field
             
-            Time.DLT = time.current;
-            Time.CLT = time.current;
-            DriverList_UpdateTime.setText("List Last Updated Time : "+time.DLT);
+            Time.DLT = time.current; //Update Last Updated Time of Driver Table
+            Time.CLT = time.current; //Update Last Updated Time of Customer Table
+            DriverList_UpdateTime.setText("List Last Updated Time : "+time.DLT); //Jlable for showing the updated time of Driver Table
             
             String jname = nameEntry.getText();
             int jeta = Integer.parseInt(etaEntry.getText());
@@ -484,30 +484,30 @@ public class CustomerView extends javax.swing.JFrame {
             double jcy = Double.parseDouble(CYEntry.getText());
             double jdx = Double.parseDouble(DXEntry.getText());
             double jdy = Double.parseDouble(DYEntry.getText());
-            customer.updateCustomer(jname, jeta, jcapacity, jcx, jcy, jdx, jdy);
+            customer.updateCustomer(jname, jeta, jcapacity, jcx, jcy, jdx, jdy); //Function to update the customer's details
             
             JOptionPane.showMessageDialog(null,"Customer Request Updated Successfully. Please choose your driver!");
 
             try {
-                Graph graph = book.CustomerGraph(jname);
-                book.UpdateDriverEAT(graph, jname);
+                Graph graph = book.CustomerGraph(jname); //Creating a graph for the customer
+                book.UpdateDriverEAT(graph, jname); //Updating the Estimated Arrival Time of all drivers based on the current customer request.
                 DBConnect db = new DBConnect();
                 con = db.connect();
                 String query = "select name,capacity,eat,rating from driver where status='Available' AND capacity>='" + jcapacity +"' AND eat<='" + jeta + "'";
-                PreparedStatement ps = this.con.prepareStatement(query);
-                ResultSet rs = ps.executeQuery(query);
-                ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
-                DefaultTableModel model = (DefaultTableModel)DriverSelectionTable.getModel();
+                PreparedStatement ps = this.con.prepareStatement(query); //PreparedStatement is a pre-compiled SQL statement to execute a parameterized query.
+                ResultSet rs = ps.executeQuery(query); //Resultset contains the results of executing an SQL query.
+                ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData(); //Used to get the metadata about a ResultSet object
+                DefaultTableModel model = (DefaultTableModel)DriverSelectionTable.getModel(); //JTable
                 String name, capacity, eat,reputation;
                 model.setRowCount(0); //Clear all rows (Reset the table)
-                //timeLabel.setText("Current Time: "+ time.current);
-                while(rs.next()){
+
+                while(rs.next()){ //The while loop gets all the existing driver on the database and display it on the table frame.
                     name=rs.getString(1);
                     capacity=rs.getString(2);
                     eat=rs.getString(3);
                     reputation=rs.getString(4);
 
-                    String[] row={name, capacity, eat,reputation};
+                    String[] row={name, capacity, eat,reputation}; //Row of details to be added into the table
                     model.addRow(row);
 
                 }
@@ -559,10 +559,10 @@ public class CustomerView extends javax.swing.JFrame {
     private void SelectDriverButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectDriverButtonActionPerformed
         if(!nameEntry.getText().isEmpty()&&!capacityEntry.getText().isEmpty()&&!etaEntry.getText().isEmpty()&&
                 !CXEntry.getText().isEmpty()&&!CYEntry.getText().isEmpty()&&
-                !DXEntry.getText().isEmpty()&&!DYEntry.getText().isEmpty()){
-            Time.CLT = time.current;
-            Time.DLT = time.current;
-            DriverList_UpdateTime.setText("List Last Updated Time : "+time.DLT);
+                !DXEntry.getText().isEmpty()&&!DYEntry.getText().isEmpty()){ //Make sure user fill up all the text field
+            Time.CLT = time.current; //Update Last Updated Time of Customer Table
+            Time.DLT = time.current; //Update Last Updated Time of Driver Table
+            DriverList_UpdateTime.setText("List Last Updated Time : "+time.DLT); //Jlable for showing the updated time of Driver Table
             ratedrivername = selectEntry.getText();
             String jname = nameEntry.getText();
             String jdrivername = selectEntry.getText();
@@ -572,34 +572,34 @@ public class CustomerView extends javax.swing.JFrame {
             double jcy = Double.parseDouble(CYEntry.getText());
             double jdx = Double.parseDouble(DXEntry.getText());
             double jdy = Double.parseDouble(DYEntry.getText());
-            driver.setStatus_Unavailable(jdrivername);
-            customer.setStatus_Waiting(jname);
+            driver.setStatus_Unavailable(jdrivername); //Updating the status of driver to 'Unavailable' upon successful selection of drivers.
+            customer.setStatus_Waiting(jname); //Updating the status of customer to 'Waiting' upon successful selection of drivers.
             
             try {
-                Graph graph = book.CustomerGraph(jname);
-                book.UpdateDriverEAT(graph, jname);
+                Graph graph = book.CustomerGraph(jname); //Creating a graph for the customer
+                book.UpdateDriverEAT(graph, jname);  //Updating the Estimated Arrival Time of all drivers based on the current customer request.
                 DBConnect db = new DBConnect();
                 con = db.connect();
                 String query = "select name,capacity,eat,rating from driver where status='Available' AND capacity>='" + jcapacity +"' AND eat<='" + jeta + "'";
-                PreparedStatement ps = this.con.prepareStatement(query);
-                ResultSet rs = ps.executeQuery(query);
-                ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
-                DefaultTableModel model = (DefaultTableModel)DriverSelectionTable.getModel();
+                PreparedStatement ps = this.con.prepareStatement(query); //PreparedStatement is a pre-compiled SQL statement to execute a parameterized query.
+                ResultSet rs = ps.executeQuery(query); //Resultset contains the results of executing an SQL query.
+                ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData(); //Used to get the metadata about a ResultSet object
+                DefaultTableModel model = (DefaultTableModel)DriverSelectionTable.getModel(); //JTable
                 String name, capacity, eat,reputation;
                 model.setRowCount(0); //Clear all rows (Reset the table)
 
-                while(rs.next()){
+                while(rs.next()){ //The while loop gets all the existing driver on the database and display it on the table frame.
                     name=rs.getString(1);
                     capacity=rs.getString(2);
                     eat=rs.getString(3);
                     reputation=rs.getString(4);
 
-                    String[] row={name, capacity, eat,reputation};
+                    String[] row={name, capacity, eat,reputation}; //Row of details to be added into the table
                     model.addRow(row);
 
                 }
-                driver.setPassenger(jdrivername, jname);
-                trip.startTrip(jname, jdrivername, jcx, jcy, jdx, jdy, graph);
+                driver.setPassenger(jdrivername, jname); //Updating the passenger of the driver upon successful selection of driver by cusdtomer
+                trip.startTrip(jname, jdrivername, jcx, jcy, jdx, jdy, graph); //Initiate to simulate the whole trip.
                 ps.close();
                 con.close();
             } catch (SQLException ex) {
@@ -616,11 +616,11 @@ public class CustomerView extends javax.swing.JFrame {
     private void AddCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddCustomerButtonActionPerformed
         if(!nameEntry.getText().isEmpty()&&!capacityEntry.getText().isEmpty()&&!etaEntry.getText().isEmpty()&&
                 !CXEntry.getText().isEmpty()&&!CYEntry.getText().isEmpty()&&
-                !DXEntry.getText().isEmpty()&&!DYEntry.getText().isEmpty()){
+                !DXEntry.getText().isEmpty()&&!DYEntry.getText().isEmpty()){ //Make sure user fill up all the text field
             
-            Time.CLT = time.current;
-            Time.DLT = time.current;
-            DriverList_UpdateTime.setText("List Last Updated Time : "+time.DLT);
+            Time.CLT = time.current; //Update Last Updated Time of Customer Table
+            Time.DLT = time.current; //Update Last Updated Time of Driver Table
+            DriverList_UpdateTime.setText("List Last Updated Time : "+time.DLT); //Jlable for showing the updated time of Driver Table
             
             String jname = nameEntry.getText();
             int jeta = Integer.parseInt(etaEntry.getText());
@@ -629,29 +629,29 @@ public class CustomerView extends javax.swing.JFrame {
             double jcy = Double.parseDouble(CYEntry.getText());
             double jdx = Double.parseDouble(DXEntry.getText());
             double jdy = Double.parseDouble(DYEntry.getText());
-            customer.addCustomer(jname, jeta, jcapacity, jcx, jcy, jdx, jdy);
+            customer.addCustomer(jname, jeta, jcapacity, jcx, jcy, jdx, jdy); //Call function to add the customer to the database
             JOptionPane.showMessageDialog(null,"Request received. Please choose your driver!");
 
             try {
-                Graph graph = book.CustomerGraph(jname);
-                book.UpdateDriverEAT(graph, jname);
+                Graph graph = book.CustomerGraph(jname); //Creating a graph for the customer
+                book.UpdateDriverEAT(graph, jname); //Updating the Estimated Arrival Time of all drivers based on the current customer request.
                 DBConnect db = new DBConnect();
                 con = db.connect();
                 String query = "select name,capacity,eat,rating from driver where status='Available' AND capacity>='" + jcapacity +"' AND eat<='" + jeta + "'";
-                PreparedStatement ps = this.con.prepareStatement(query);
-                ResultSet rs = ps.executeQuery(query);
-                ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
-                DefaultTableModel model = (DefaultTableModel)DriverSelectionTable.getModel();
+                PreparedStatement ps = this.con.prepareStatement(query); //PreparedStatement is a pre-compiled SQL statement to execute a parameterized query.
+                ResultSet rs = ps.executeQuery(query); //Resultset contains the results of executing an SQL query.
+                ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData(); //Used to get the metadata about a ResultSet object
+                DefaultTableModel model = (DefaultTableModel)DriverSelectionTable.getModel(); //JTable
                 String name, capacity, eat,reputation;
                 model.setRowCount(0); //Clear all rows (Reset the table)
                 
-                while(rs.next()){
+                while(rs.next()){ //The while loop gets all the existing driver on the database and display it on the table frame.
                     name=rs.getString(1);
                     capacity=rs.getString(2);
                     eat=rs.getString(3);
                     reputation=rs.getString(4);
 
-                    String[] row={name, capacity, eat,reputation};
+                    String[] row={name, capacity, eat,reputation}; //Row of details to be added into the table
                     model.addRow(row);
 
                 }
@@ -666,7 +666,7 @@ public class CustomerView extends javax.swing.JFrame {
         }//End of if statement
 
     }//GEN-LAST:event_AddCustomerButtonActionPerformed
-
+    //Method to clear all the text field
     private void ClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearButtonActionPerformed
         nameEntry.setText("");
         capacityEntry.setText("");
