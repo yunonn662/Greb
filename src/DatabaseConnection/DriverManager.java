@@ -148,7 +148,7 @@ public class DriverManager {
             
             PreparedStatement ps = con.prepareStatement(query); //PreparedStatement is a pre-compiled SQL statement to execute a parameterized query.
             ps.executeUpdate();
-            System.out.println("Driver status updated successfully.");
+            System.out.println("Driver status updated to 'Unavailable' successfully.");
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(CustomerManager.class.getName()).log(Level.SEVERE, null, ex);
@@ -165,12 +165,7 @@ public class DriverManager {
             
             PreparedStatement ps = con.prepareStatement(query); //PreparedStatement is a pre-compiled SQL statement to execute a parameterized query.
             ps.executeUpdate();
-            if(ps.execute()){
-                System.out.println("Driver status updated successfully.");
-            }else{
-                System.out.println("Invalid Driver Name.");
-            }
-            
+            System.out.println("Driver status updated to 'Available' successfully.");
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(CustomerManager.class.getName()).log(Level.SEVERE, null, ex);

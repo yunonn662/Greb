@@ -179,7 +179,10 @@ public class Time {
                 
                 if(hour<10){
                     eta = "0" + hour;
-                }else{
+                }else if(hour==00){
+                    eta = "00" + hour;
+                }
+                else{
                     eta = String.valueOf(hour);
                 }
                 

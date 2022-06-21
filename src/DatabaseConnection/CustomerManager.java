@@ -126,7 +126,7 @@ public class CustomerManager
             
             PreparedStatement ps = con.prepareStatement(query); //PreparedStatement is a pre-compiled SQL statement to execute a parameterized query.
             ps.executeUpdate();
-            System.out.println("Customer status updated successfully.");
+            System.out.println("Customer status updated to 'Waiting' successfully.");
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(CustomerManager.class.getName()).log(Level.SEVERE, null, ex);
@@ -142,7 +142,7 @@ public class CustomerManager
             
             PreparedStatement ps = con.prepareStatement(query); //PreparedStatement is a pre-compiled SQL statement to execute a parameterized query.
             ps.executeUpdate();
-            System.out.println("Customer status updated successfully.");
+            System.out.println("Customer status updated to 'Pending' successfully.");
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(CustomerManager.class.getName()).log(Level.SEVERE, null, ex);
@@ -158,7 +158,7 @@ public class CustomerManager
             
             PreparedStatement ps = con.prepareStatement(query); //PreparedStatement is a pre-compiled SQL statement to execute a parameterized query.
             ps.executeUpdate();
-            System.out.println("Customer status updated successfully.");
+            System.out.println("Customer status updated to 'Picked Up' successfully.");
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(CustomerManager.class.getName()).log(Level.SEVERE, null, ex);
@@ -174,7 +174,7 @@ public class CustomerManager
             
             PreparedStatement ps = con.prepareStatement(query); //PreparedStatement is a pre-compiled SQL statement to execute a parameterized query.
             ps.executeUpdate();
-            System.out.println("Customer status updated successfully.");
+            System.out.println("Customer status updated to 'Reached' successfully.");
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(CustomerManager.class.getName()).log(Level.SEVERE, null, ex);
