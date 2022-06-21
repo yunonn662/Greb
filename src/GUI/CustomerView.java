@@ -420,6 +420,14 @@ public class CustomerView extends javax.swing.JFrame {
                     capacity=rs.getString(2);
                     eat=rs.getString(3);
                     reputation=rs.getString(4);
+                    
+                    if(eat.length() == 1){ //To fix time bug showing 3 when time is 0003 at ETA column in the driver table
+                        eat = "000" + eat;
+                    }else if(eat.length() == 2){
+                        eat = "00" + eat;
+                    }else if(eat.length() == 3){
+                        eat = "0" + eat;
+                    }
 
                     String[] row={name, capacity, eat,reputation}; //Row of details to be added into the table
                     model.addRow(row);
@@ -506,6 +514,14 @@ public class CustomerView extends javax.swing.JFrame {
                     capacity=rs.getString(2);
                     eat=rs.getString(3);
                     reputation=rs.getString(4);
+                    
+                    if(eat.length() == 1){ //To fix time bug showing 3 when time is 0003 at ETA column in the driver table
+                        eat = "000" + eat;
+                    }else if(eat.length() == 2){
+                        eat = "00" + eat;
+                    }else if(eat.length() == 3){
+                        eat = "0" + eat;
+                    }
 
                     String[] row={name, capacity, eat,reputation}; //Row of details to be added into the table
                     model.addRow(row);
@@ -593,6 +609,14 @@ public class CustomerView extends javax.swing.JFrame {
                     capacity=rs.getString(2);
                     eat=rs.getString(3);
                     reputation=rs.getString(4);
+                    
+                    if(eat.length() == 1){ //To fix time bug showing 3 when time is 0003 at ETA column in the driver table
+                        eat = "000" + eat;
+                    }else if(eat.length() == 2){
+                        eat = "00" + eat;
+                    }else if(eat.length() == 3){
+                        eat = "0" + eat;
+                    }
 
                     String[] row={name, capacity, eat,reputation}; //Row of details to be added into the table
                     model.addRow(row);
@@ -650,6 +674,14 @@ public class CustomerView extends javax.swing.JFrame {
                     capacity=rs.getString(2);
                     eat=rs.getString(3);
                     reputation=rs.getString(4);
+                    
+                    if(eat.length() == 1){ //To fix time bug showing 3 when time is 0003 at ETA column in the driver table
+                        eat = "000" + eat;
+                    }else if(eat.length() == 2){
+                        eat = "00" + eat;
+                    }else if(eat.length() == 3){
+                        eat = "0" + eat;
+                    }
 
                     String[] row={name, capacity, eat,reputation}; //Row of details to be added into the table
                     model.addRow(row);
