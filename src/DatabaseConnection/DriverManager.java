@@ -5,10 +5,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 
 public class DriverManager {
@@ -28,7 +30,9 @@ public class DriverManager {
             ps.setDouble(4, latitude);
             ps.executeUpdate();
             System.out.println("Driver added successfully.");
-
+            JOptionPane.showMessageDialog(null,"Driver Registered!");
+        } catch(SQLIntegrityConstraintViolationException e){
+                JOptionPane.showMessageDialog(null, "Driver ID Already Registered!");
         } catch (SQLException ex) {
             Logger.getLogger(CustomerManager.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -280,7 +280,7 @@ public class AddRemoveDriver extends javax.swing.JFrame {
         double y = Double.parseDouble(yEntry.getText());
         driver.addDriver(jname, jcapacity, x, y); //Adding the driver.
 
-        JOptionPane.showMessageDialog(null,"Driver Registered!");
+        
         DriverList_UpdateTime.setText("List Last Updated Time : "+Time.DLT); //Jlable for showing the updated time of Driver Table
             try {
                 DBConnect db = new DBConnect();

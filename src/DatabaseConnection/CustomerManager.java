@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.Connection;
+import java.sql.SQLIntegrityConstraintViolationException;
+import javax.swing.JOptionPane;
 
 public class CustomerManager
 {
@@ -34,9 +36,11 @@ public class CustomerManager
             ps.setDouble(7, dest_Y);
             ps.executeUpdate();
             System.out.println("Customer added successfully.");
+            JOptionPane.showMessageDialog(null,"Request received. Please choose your driver!");
             con.close();
-        }
-        catch (SQLException ex) {
+        }catch(SQLIntegrityConstraintViolationException e){
+                JOptionPane.showMessageDialog(null, "Customer ID Already Registered!");
+        }catch (SQLException ex) {
             Logger.getLogger(CustomerManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

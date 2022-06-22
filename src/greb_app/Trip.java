@@ -64,6 +64,8 @@ public class Trip {
                         Time.CLT = Time.current; //Update Last Updated Time of Customer Table
                         Time.DLT = Time.current; //Update Last Updated Time of Driver Table
                         JOptionPane.showMessageDialog(null,jname+" has reached his/her destination safely!");
+                        System.out.println("The Trip has ended!");
+                        System.out.println("");
                         FeedBack fb = new FeedBack(); 
                         fb.setVisible(true); //Show the FeedBack GUI
 

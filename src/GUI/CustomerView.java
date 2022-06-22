@@ -465,6 +465,7 @@ public class CustomerView extends javax.swing.JFrame {
             
             } catch (SQLException ex) {
                 Logger.getLogger(CustomerView.class.getName()).log(Level.SEVERE, null, ex);
+                
             }
         }else{
             JOptionPane.showMessageDialog(null,"Please provide customer's name to search!");
@@ -622,12 +623,13 @@ public class CustomerView extends javax.swing.JFrame {
                     model.addRow(row);
 
                 }
-                driver.setPassenger(jdrivername, jname); //Updating the passenger of the driver upon successful selection of driver by cusdtomer
+                driver.setPassenger(jdrivername, jname); //Updating the passenger of the driver upon successful selection of driver by customer
                 trip.startTrip(jname, jdrivername, jcx, jcy, jdx, jdy, graph); //Initiate to simulate the whole trip.
                 ps.close();
                 con.close();
-            } catch (SQLException ex) {
+            }catch (SQLException ex) {
             Logger.getLogger(CustomerView.class.getName()).log(Level.SEVERE, null, ex);
+            
             }
         }else{
             JOptionPane.showMessageDialog(null,"Please fill out the customer's details!");
@@ -654,7 +656,7 @@ public class CustomerView extends javax.swing.JFrame {
             double jdx = Double.parseDouble(DXEntry.getText());
             double jdy = Double.parseDouble(DYEntry.getText());
             customer.addCustomer(jname, jeta, jcapacity, jcx, jcy, jdx, jdy); //Call function to add the customer to the database
-            JOptionPane.showMessageDialog(null,"Request received. Please choose your driver!");
+            
 
             try {
                 Graph graph = book.CustomerGraph(jname); //Creating a graph for the customer
@@ -690,10 +692,10 @@ public class CustomerView extends javax.swing.JFrame {
                 ps.close();
                 con.close();
 
-            } catch (SQLException ex) {
+            }catch (SQLException ex) {
                 Logger.getLogger(CustomerView.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }else{
+            }    
+            }else{
             JOptionPane.showMessageDialog(null,"Please fill out the customer's details!");
         }//End of if statement
 
