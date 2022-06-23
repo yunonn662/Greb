@@ -7,7 +7,9 @@ package GUI;
 import DatabaseConnection.CustomerManager;
 import DatabaseConnection.DBConnect;
 import DatabaseConnection.DriverManager;
+import static DatabaseConnection.DriverManager.count;
 import Map.Graph;
+import Models.Driver;
 import com.mysql.cj.jdbc.result.ResultSetMetaData;
 import greb_app.Book;
 import greb_app.Time;
@@ -63,7 +65,6 @@ public class CustomerView extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         DriverSelectionTable = new javax.swing.JTable();
         Jselect = new javax.swing.JLabel();
-        selectEntry = new javax.swing.JTextField();
         UpdateCustomerButton = new javax.swing.JButton();
         SearchCustomerButton = new javax.swing.JButton();
         Jname = new javax.swing.JLabel();
@@ -75,6 +76,7 @@ public class CustomerView extends javax.swing.JFrame {
         Jcapacity = new javax.swing.JLabel();
         BackButton = new javax.swing.JButton();
         ClearButton = new javax.swing.JButton();
+        selectEntry2 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -171,12 +173,6 @@ public class CustomerView extends javax.swing.JFrame {
         Jselect.setForeground(new java.awt.Color(0, 0, 0));
         Jselect.setText("Driver");
         Jselect.setPreferredSize(new java.awt.Dimension(60, 32));
-
-        selectEntry.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selectEntryActionPerformed(evt);
-            }
-        });
 
         UpdateCustomerButton.setText("Update Customer");
         UpdateCustomerButton.setPreferredSize(new java.awt.Dimension(165, 38));
@@ -289,7 +285,8 @@ public class CustomerView extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(Jselect, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(selectEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(selectEntry2, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(13, 13, 13))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -315,10 +312,12 @@ public class CustomerView extends javax.swing.JFrame {
                         .addComponent(SearchCustomerButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(135, 135, 135)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addGap(126, 126, 126)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(Jselect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(selectEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(selectEntry2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(5, 5, 5))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addComponent(RequestButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -414,7 +413,11 @@ public class CustomerView extends javax.swing.JFrame {
                 DefaultTableModel model = (DefaultTableModel)DriverSelectionTable.getModel(); //JTable
                 String name, capacity, eat,reputation;
                 model.setRowCount(0); //Clear all rows (Reset the table)
-                
+
+                for(int i=0;i<count;i++){
+                    Driver driverName = (Driver) driver.getAllDriver().get(i);
+                    selectEntry2.addItem((String)driverName.getName()); 
+                }
                 while(rs.next()){ //The while loop gets all the existing driver on the database and display it on the table frame.
                     name=rs.getString(1);
                     capacity=rs.getString(2);
@@ -509,6 +512,11 @@ public class CustomerView extends javax.swing.JFrame {
                 DefaultTableModel model = (DefaultTableModel)DriverSelectionTable.getModel(); //JTable
                 String name, capacity, eat,reputation;
                 model.setRowCount(0); //Clear all rows (Reset the table)
+                
+                for(int i=0;i<count;i++){
+                    Driver driverName = (Driver) driver.getAllDriver().get(i);
+                    selectEntry2.addItem((String)driverName.getName()); 
+                }
 
                 while(rs.next()){ //The while loop gets all the existing driver on the database and display it on the table frame.
                     name=rs.getString(1);
@@ -538,10 +546,6 @@ public class CustomerView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Please fill out the customer's details!");
         }//End of if statement
     }//GEN-LAST:event_UpdateCustomerButtonActionPerformed
-
-    private void selectEntryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectEntryActionPerformed
-
-    }//GEN-LAST:event_selectEntryActionPerformed
 
     private void DXEntryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DXEntryActionPerformed
         // TODO add your handling code here:
@@ -577,12 +581,15 @@ public class CustomerView extends javax.swing.JFrame {
         if(!nameEntry.getText().isEmpty()&&!capacityEntry.getText().isEmpty()&&!etaEntry.getText().isEmpty()&&
                 !CXEntry.getText().isEmpty()&&!CYEntry.getText().isEmpty()&&
                 !DXEntry.getText().isEmpty()&&!DYEntry.getText().isEmpty()){ //Make sure user fill up all the text field
+            
+            
             Time.CLT = time.current; //Update Last Updated Time of Customer Table
             Time.DLT = time.current; //Update Last Updated Time of Driver Table
             DriverList_UpdateTime.setText("List Last Updated Time : "+time.DLT); //Jlable for showing the updated time of Driver Table
-            ratedrivername = selectEntry.getText();
+            
+            ratedrivername = (String) selectEntry2.getSelectedItem();
             String jname = nameEntry.getText();
-            String jdrivername = selectEntry.getText();
+            String jdrivername = (String) selectEntry2.getSelectedItem();
             int jeta = Integer.parseInt(etaEntry.getText());
             int jcapacity = Integer.parseInt(capacityEntry.getText());
             double jcx = Double.parseDouble(CXEntry.getText());
@@ -591,7 +598,6 @@ public class CustomerView extends javax.swing.JFrame {
             double jdy = Double.parseDouble(DYEntry.getText());
             driver.setStatus_Unavailable(jdrivername); //Updating the status of driver to 'Unavailable' upon successful selection of drivers.
             customer.setStatus_Waiting(jname); //Updating the status of customer to 'Waiting' upon successful selection of drivers.
-            
             try {
                 Graph graph = book.CustomerGraph(jname); //Creating a graph for the customer
                 book.UpdateDriverEAT(graph, jname);  //Updating the Estimated Arrival Time of all drivers based on the current customer request.
@@ -670,6 +676,11 @@ public class CustomerView extends javax.swing.JFrame {
                 DefaultTableModel model = (DefaultTableModel)DriverSelectionTable.getModel(); //JTable
                 String name, capacity, eat,reputation;
                 model.setRowCount(0); //Clear all rows (Reset the table)
+                
+                for(int i=0;i<count;i++){
+                    Driver driverName = (Driver) driver.getAllDriver().get(i);
+                    selectEntry2.addItem((String)driverName.getName()); 
+                }
                 
                 while(rs.next()){ //The while loop gets all the existing driver on the database and display it on the table frame.
                     name=rs.getString(1);
@@ -775,7 +786,7 @@ public class CustomerView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextField nameEntry;
-    private javax.swing.JTextField selectEntry;
+    private javax.swing.JComboBox<String> selectEntry2;
     // End of variables declaration//GEN-END:variables
 
 }//End of CustomerView Class

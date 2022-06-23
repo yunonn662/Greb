@@ -25,6 +25,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Dashboard extends javax.swing.JFrame {
     Connection con;
+
     
     public Dashboard(Connection con) {
         this.con = null;

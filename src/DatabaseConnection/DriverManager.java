@@ -15,7 +15,8 @@ import javax.swing.JOptionPane;
 
 public class DriverManager {
     Connection con = null;
-
+    public static int count; //count is used to store the number of driver which is later used for the combobox in CustomerView
+    
     //Method to add driver to the database
     public void addDriver(String name, Integer capacity, Double longitude, Double latitude){
 
@@ -123,6 +124,7 @@ public class DriverManager {
         } catch (SQLException ex) {
             Logger.getLogger(CustomerManager.class.getName()).log(Level.SEVERE, null, ex);
         }
+        count = driverNames.size();
         return driverNames;
     }
     
